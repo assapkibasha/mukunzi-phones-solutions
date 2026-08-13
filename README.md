@@ -1,4 +1,6 @@
-# MPS — Mukunzi Phones Solution
+# MPS — Mukunzi Phones Solutions
+
+**Live site: https://mukunzi-phones-solutions.vercel.app**
 
 Online shop for genuine phones & electronics in **Kigali, Rwanda**.
 Built with [Next.js](https://nextjs.org). Design inspired by the structure of
