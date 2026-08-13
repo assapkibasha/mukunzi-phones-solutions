@@ -8,12 +8,10 @@ import {
   IconPhone,
   IconLaptop,
   IconHeadphones,
-  IconWatch,
-  IconGamepad,
   IconZap,
-  IconRouter,
   IconWrench,
   IconTag,
+  IconSwap,
 } from "@/components/Icons";
 
 export default function Header() {
@@ -54,8 +52,6 @@ export default function Header() {
               <option value="phones">Phones &amp; Tablets</option>
               <option value="computers">Computers &amp; Laptops</option>
               <option value="audio">Audio &amp; Sound</option>
-              <option value="wearables">Wearables</option>
-              <option value="gaming">Gaming</option>
               <option value="power">Power &amp; Accessories</option>
             </select>
             <input type="search" name="q" placeholder="Search phones, laptops, TVs…" aria-label="Search products" />
@@ -97,21 +93,17 @@ export default function Header() {
             <IconHeadphones />
             Audio &amp; Sound
           </Link>
-          <Link className="cat-chip" href="/products?category=wearables">
-            <IconWatch />
-            Wearables
-          </Link>
-          <Link className="cat-chip" href="/products?category=gaming">
-            <IconGamepad />
-            Gaming
-          </Link>
           <Link className="cat-chip" href="/products?category=power">
             <IconZap />
-            Power
+            Power &amp; Accessories
           </Link>
-          <Link className="cat-chip" href="/products?category=networking">
-            <IconRouter />
-            Networking
+          <Link className="cat-chip" href="/services/installments">
+            <IconTag />
+            iPhone Installments
+          </Link>
+          <Link className="cat-chip" href="/services/trade-in">
+            <IconSwap />
+            Trade-in
           </Link>
           <Link className="cat-chip" href="/services/phone-repair">
             <IconWrench />

@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
-import BuyControls from "@/components/BuyControls";
-import { products, findProduct, formatRWF, productImage } from "@/lib/products";
-import { IconTruck, IconPin, IconCard, IconShield, IconWhatsApp } from "@/components/Icons";
+import ProductBuyPanel from "@/components/ProductBuyPanel";
+import { products, findProduct, productImage } from "@/lib/products";
+import { IconTruck, IconPin, IconCard, IconShield } from "@/components/Icons";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -61,12 +61,6 @@ export default async function ProductPage({ params }) {
             </span>
           </div>
 
-          <div className="detail-price">
-            <span className="price">{formatRWF(product.price)}</span>
-            {product.oldPrice && <span className="price-old">{formatRWF(product.oldPrice)}</span>}
-            {product.off && <span className="deal-flag">{product.off}</span>}
-          </div>
-
           <ul className="spec-list">
             {product.highlights.map(([key, value]) => (
               <li key={key}>
@@ -76,20 +70,15 @@ export default async function ProductPage({ params }) {
             ))}
           </ul>
 
-          <BuyControls stock={product.stock} />
-          <a
-            className="btn btn-wa"
-            style={{ width: "100%", marginTop: 10 }}
-            href={
-              "https://wa.me/250780285043?text=" +
-              encodeURIComponent("Muraho MPS, I want to order: " + product.title)
-            }
-            target="_blank"
-            rel="noopener"
-          >
-            <IconWhatsApp />
-            Order on WhatsApp — 0780 285 043
-          </a>
+          <ProductBuyPanel
+            title={product.title}
+            stock={product.stock}
+            basePrice={product.price}
+            oldPrice={product.oldPrice}
+            off={product.off}
+            colors={product.colors || []}
+            storages={product.storages || []}
+          />
         </div>
 
         {/* Buy box */}

@@ -11,10 +11,8 @@ import {
   IconReturn,
   IconPhone,
   IconLaptop,
-  IconGamepad,
   IconZap,
   IconHeadphones,
-  IconWatch,
   IconCamera,
   IconWrench,
   IconSwap,
@@ -36,27 +34,25 @@ const tiles = [
   { label: "Phones & Tablets", from: "from RWF 85,000", icon: IconPhone, category: "phones" },
   { label: "Computers & Laptops", from: "from RWF 720,000", icon: IconLaptop, category: "computers" },
   { label: "Audio & Sound", from: "from RWF 28,000", icon: IconHeadphones, category: "audio" },
-  { label: "Wearables", from: "from RWF 55,000", icon: IconWatch, category: "wearables" },
-  { label: "Gaming", from: "from RWF 95,000", icon: IconGamepad, category: "gaming" },
-  { label: "Power & Networking", from: "from RWF 35,000", icon: IconZap, category: "power" },
+  { label: "Power & Accessories", from: "from RWF 35,000", icon: IconZap, category: "power" },
 ];
 
 const bestSellers = [
   "samsung-galaxy-a16",
-  "tecno-camon-30",
+  "iphone-13",
+  "tecno-camon-40",
   "oraimo-freepods-4",
   "hp-laptop-15",
+  "samsung-galaxy-s25",
   "samsung-galaxy-tab-a9",
-  "tp-link-archer-c6",
-  "oraimo-watch-5-lite",
   "itel-a70",
-  "infinix-note-40",
-  "dualsense-controller",
+  "infinix-note-50",
+  "jbl-go-4",
 ];
 
 const brands = [
   "Apple", "Samsung", "Tecno", "Infinix", "itel",
-  "HP", "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
+  "HP", "JBL", "Oraimo", "Anker",
 ];
 
 export default function HomePage() {
