@@ -1,39 +1,43 @@
-# Isoko — Electronics Marketplace (Rwanda)
+# MPS — Mukunzi Phones Solution
 
-A prototype for an online electronics shopping platform for Rwanda, inspired by
-the structure of large marketplaces like made-in-china.com but designed for
-Rwandan retail shoppers.
+Online shop for genuine phones & electronics in **Kigali, Rwanda**.
+Built with [Next.js](https://nextjs.org). Design inspired by the structure of
+large marketplaces (made-in-china.com), rebranded in the MPS navy blue & white.
 
-> **Note:** "Isoko" (Kinyarwanda for *market*) is a placeholder name — easy to
-> change once a real brand name is chosen.
+## Key business rules
 
-## What's here
+- **Payments:** MTN MoMo and Airtel Money **only** — no cards.
+- **Delivery:** Kigali (same-day / next-day, fee from RWF 1,500).
+  Provinces served on request — delivery fee depends on the district.
+  Delivery is always paid, never free.
+- **Warranty:** 12 months on official stock.
 
-| Page | Description |
+## Pages
+
+| Route | Description |
 |---|---|
-| `index.html` | Homepage — search, categories, hero, deals, best sellers |
-| `products.html` | Product listing with filters, sorting, and pagination |
-| `product.html` | Product detail — gallery, specs, delivery info, add to cart |
+| `/` | Homepage — search, categories, deals, best sellers |
+| `/products` | Product listing with filters and sorting |
+| `/product/[slug]` | Product detail — specs, delivery info, add to cart |
 
-## Features
-
-- Prices in Rwandan francs (RWF)
-- MTN MoMo & Airtel Money payment badges
-- Nationwide delivery messaging (all 30 districts)
-- Working cart counter (saved in the browser)
-- Fully responsive — desktop, tablet, and phone
-- No frameworks, no build step — plain HTML, CSS, and JavaScript
+Products currently live in [`lib/products.js`](lib/products.js) — one file,
+easy to edit. A real database comes later.
 
 ## How to run
 
-Just open `index.html` in any web browser — no installation needed.
+```bash
+npm install
+npm run dev
+```
+
+Then open http://localhost:3000
 
 ## Tech stack
 
-HTML5 · CSS3 (custom properties, grid, flexbox) · vanilla JavaScript
+Next.js (App Router) · React · plain CSS (custom properties, grid, flexbox)
 
 ## Status / next steps
 
-This is a **frontend prototype** (the design and pages). To become a real shop it
-still needs a backend: real product database, user accounts, cart & checkout,
-and mobile money payment integration (MTN MoMo API / Airtel Money API).
+Frontend prototype. Still to come: real product photos, cart & checkout pages,
+user accounts, MTN MoMo / Airtel Money payment integration, admin panel,
+deployment.

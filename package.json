@@ -1,0 +1,16 @@
+{
+  "name": "mps",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MPS — Mukunzi Phones Solution. Online electronics shop in Kigali, Rwanda.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}
