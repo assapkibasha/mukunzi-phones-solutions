@@ -57,7 +57,6 @@ export default async function ProductsPage({ searchParams }) {
             <label><input type="checkbox" defaultChecked /> Samsung</label>
             <label><input type="checkbox" /> Infinix</label>
             <label><input type="checkbox" /> itel</label>
-            <label><input type="checkbox" /> Xiaomi</label>
           </div>
           <div className="filter-group">
             <h4>Price (RWF)</h4>

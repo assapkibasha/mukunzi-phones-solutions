@@ -55,7 +55,7 @@ const bestSellers = [
 ];
 
 const brands = [
-  "Apple", "Samsung", "Tecno", "Infinix", "itel", "Xiaomi",
+  "Apple", "Samsung", "Tecno", "Infinix", "itel",
   "HP", "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
 ];
 
@@ -242,7 +242,7 @@ export default function HomePage() {
                 <span className="rating">★★★★★</span>
               </div>
               <p>
-                "Ordered a Tecno Spark 20 at lunch time — it arrived sealed before 6 PM.
+                "Ordered an iPhone 13 at lunch time — it arrived sealed before 6 PM.
                 We unboxed it together with the delivery guy so I could check everything."
               </p>
             </article>
