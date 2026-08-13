@@ -39,8 +39,8 @@ const bestSellers = [
 ];
 
 const brands = [
-  "Samsung", "Tecno", "Infinix", "itel", "Xiaomi", "HP",
-  "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
+  "Apple", "Samsung", "Tecno", "Infinix", "itel", "Xiaomi",
+  "HP", "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
 ];
 
 export default function HomePage() {
@@ -56,7 +56,7 @@ export default function HomePage() {
             <p className="eyebrow">Phones &amp; electronics · Kigali</p>
             <h1>New phones, genuine stock, Kigali delivery.</h1>
             <p>
-              Tecno, Samsung, Infinix, itel and Xiaomi from official distributors —
+              Apple, Samsung, Tecno, Infinix, itel and Xiaomi from official distributors —
               sealed in the box with a 12-month warranty. Pay with MTN MoMo or Airtel Money.
             </p>
             <div className="hero-cta-row">
@@ -135,6 +135,23 @@ export default function HomePage() {
             {deals.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* iPhones */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
+            <h2>iPhones</h2>
+            <Link className="see-all" href="/products">See all →</Link>
+          </div>
+          <div className="product-grid">
+            {products
+              .filter((p) => p.brand === "Apple")
+              .map((p) => (
+                <ProductCard key={p.slug} product={p} />
+              ))}
           </div>
         </div>
       </section>

@@ -26,6 +26,7 @@ export default function ProductsPage() {
         <aside className="filters" aria-label="Filters">
           <div className="filter-group">
             <h4>Brand</h4>
+            <label><input type="checkbox" defaultChecked /> Apple</label>
             <label><input type="checkbox" defaultChecked /> Tecno</label>
             <label><input type="checkbox" defaultChecked /> Samsung</label>
             <label><input type="checkbox" /> Infinix</label>
