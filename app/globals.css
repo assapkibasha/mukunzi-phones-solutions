@@ -883,6 +883,18 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
 .opt-price { font-size: 11px; font-weight: 500; color: var(--ink-soft); }
 .opt-chip.active .opt-price { color: var(--blue); }
 
+.dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(26, 33, 43, 0.22);
+  flex-shrink: 0;
+}
+.opt-chip.swatch { flex-direction: row; align-items: center; gap: 8px; border-radius: 999px; }
+.card-dots { display: flex; gap: 5px; }
+.card-dots .dot { width: 11px; height: 11px; }
+
 .qty-row { display: flex; gap: 12px; align-items: center; margin: 16px 0; }
 .qty-label { font-weight: 600; font-size: 13.5px; }
 .qty-stock { font-size: 12.5px; color: var(--ink-soft); }

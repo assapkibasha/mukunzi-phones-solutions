@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
-import { formatRWF, productImage } from "@/lib/products";
+import { formatRWF, productImage, COLOR_HEX } from "@/lib/products";
 
 export default function ProductCard({ product, withButton = true }) {
   return (
@@ -24,6 +24,13 @@ export default function ProductCard({ product, withButton = true }) {
           {product.stars}
           <span className="count">({product.count})</span>
         </div>
+        {product.colors && (
+          <div className="card-dots" aria-label={"Available in " + product.colors.join(", ")}>
+            {product.colors.slice(0, 6).map((c) => (
+              <span key={c} className="dot" style={{ background: COLOR_HEX[c] || "#cccccc" }} />
+            ))}
+          </div>
+        )}
         <div className="price-row">
           <span className="price">{formatRWF(product.price)}</span>
           {product.oldPrice && <span className="price-old">{formatRWF(product.oldPrice)}</span>}

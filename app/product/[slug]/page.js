@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import ProductBuyPanel from "@/components/ProductBuyPanel";
+import ProductGallery from "@/components/ProductGallery";
 import { products, findProduct, productImage } from "@/lib/products";
 import { IconTruck, IconPin, IconCard, IconShield } from "@/components/Icons";
 
@@ -39,17 +39,8 @@ export default async function ProductPage({ params }) {
       </div>
 
       <div className="container detail-grid">
-        {/* Photo */}
-        <div className="gallery-main">
-          <Image
-            src={productImage(product)}
-            alt={product.title}
-            fill
-            sizes="(max-width: 900px) 100vw, 520px"
-            style={{ objectFit: "contain", padding: 28 }}
-            priority
-          />
-        </div>
+        {/* Photo — swaps when a color is chosen */}
+        <ProductGallery src={productImage(product)} alt={product.title} />
 
         {/* Info */}
         <div className="detail-info">
@@ -78,6 +69,7 @@ export default async function ProductPage({ params }) {
             off={product.off}
             colors={product.colors || []}
             storages={product.storages || []}
+            colorImages={product.colorImages || {}}
           />
         </div>
 

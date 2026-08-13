@@ -2,16 +2,22 @@
 
 import { useState } from "react";
 import { addToCart } from "@/lib/cart";
-import { formatRWF } from "@/lib/products";
+import { formatRWF, COLOR_HEX } from "@/lib/products";
 import { IconWhatsApp } from "@/components/Icons";
 
 // Price + color/storage choice + quantity + buy buttons.
 // One product listing covers all variants: the buyer picks the color
-// and storage here, and the price updates with the storage choice.
-export default function ProductBuyPanel({ title, stock, basePrice, oldPrice, off, colors = [], storages = [] }) {
+// and storage here; the price follows the storage, and picking a color
+// swaps the product photo (via the "mps:variant" event).
+export default function ProductBuyPanel({ title, stock, basePrice, oldPrice, off, colors = [], storages = [], colorImages = {} }) {
   const [color, setColor] = useState(colors[0] || null);
   const [storageIdx, setStorageIdx] = useState(0);
   const [qty, setQty] = useState(1);
+
+  const pickColor = (c) => {
+    setColor(c);
+    window.dispatchEvent(new CustomEvent("mps:variant", { detail: { image: colorImages[c] || null } }));
+  };
 
   const price = storages.length ? storages[storageIdx].price : basePrice;
   const showDeal = oldPrice && price === basePrice;
@@ -46,9 +52,10 @@ export default function ProductBuyPanel({ title, stock, basePrice, oldPrice, off
               <button
                 key={c}
                 type="button"
-                className={"opt-chip" + (c === color ? " active" : "")}
-                onClick={() => setColor(c)}
+                className={"opt-chip swatch" + (c === color ? " active" : "")}
+                onClick={() => pickColor(c)}
               >
+                <span className="dot" style={{ background: COLOR_HEX[c] || "#cccccc" }} />
                 {c}
               </button>
             ))}
