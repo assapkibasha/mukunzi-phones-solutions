@@ -14,6 +14,11 @@ import {
   IconZap,
   IconHeadphones,
   IconWatch,
+  IconCamera,
+  IconWrench,
+  IconSwap,
+  IconCash,
+  IconWhatsApp,
 } from "@/components/Icons";
 
 const tiles = [
@@ -53,7 +58,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-inner">
           <div className="hero-copy">
-            <p className="eyebrow">Phones &amp; electronics · Kigali</p>
+            <p className="eyebrow">Phones that power your life</p>
             <h1>New phones, genuine stock, Kigali delivery.</h1>
             <p>
               Apple, Samsung, Tecno, Infinix, itel and Xiaomi from official distributors —
@@ -61,12 +66,15 @@ export default function HomePage() {
             </p>
             <div className="hero-cta-row">
               <Link className="btn btn-white" href="/products">Browse phones</Link>
-              <Link className="hero-link" href="/products">See today's deals</Link>
+              <a className="btn btn-wa" href="https://wa.me/250780285043" target="_blank" rel="noopener">
+                <IconWhatsApp />
+                WhatsApp us
+              </a>
             </div>
             <div className="hero-points">
               <div><strong>Same-day delivery</strong>in Kigali, order before 3 PM</div>
-              <div><strong>Provinces served</strong>2–4 days, fee by district</div>
-              <div><strong>Mobile money</strong>MTN MoMo &amp; Airtel Money</div>
+              <div><strong>Pay in installments</strong>40–50% deposit on iPhones</div>
+              <div><strong>Trade-in welcome</strong>your old phone counts</div>
             </div>
           </div>
 
@@ -156,6 +164,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Our services */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
+            <h2>Our services</h2>
+          </div>
+          <div className="service-grid">
+            <div className="service-card">
+              <IconPhone />
+              <div>
+                <strong>Phone sales</strong>
+                <p>New, sealed phones from official distributors — 12-month warranty on every one.</p>
+              </div>
+            </div>
+            <div className="service-card">
+              <IconCard />
+              <div>
+                <strong>Pay in installments</strong>
+                <p>Take an iPhone with a 40–50% deposit and pay the balance over 2 months.</p>
+              </div>
+            </div>
+            <div className="service-card">
+              <IconSwap />
+              <div>
+                <strong>Trade-in (top up)</strong>
+                <p>Bring your old phone — we value it on the spot and you pay only the difference.</p>
+              </div>
+            </div>
+            <div className="service-card">
+              <IconCash />
+              <div>
+                <strong>We buy phones</strong>
+                <p>Selling your phone? We check it and pay you cash or mobile money the same day.</p>
+              </div>
+            </div>
+            <div className="service-card">
+              <IconWrench />
+              <div>
+                <strong>Phone repair</strong>
+                <p>Screens, batteries, charging ports and software — quick repairs in Kigali.</p>
+              </div>
+            </div>
+            <div className="service-card">
+              <IconCamera />
+              <div>
+                <strong>Laptops, cameras &amp; accessories</strong>
+                <p>Laptops, cameras, speakers, Bluetooth headsets, chargers and more.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Shop by category */}
       <section style={{ paddingTop: 4 }}>
         <div className="container">
@@ -216,7 +277,10 @@ export default function HomePage() {
                 and deliver them to your door in Kigali.
               </p>
             </div>
-            <Link className="btn btn-white" href="/products">Request a phone</Link>
+            <a className="btn btn-wa" href="https://wa.me/250780285043?text=Muraho%20MPS%2C%20ndashaka%20telefone" target="_blank" rel="noopener">
+              <IconWhatsApp />
+              WhatsApp: 0780 285 043
+            </a>
           </div>
         </div>
       </section>

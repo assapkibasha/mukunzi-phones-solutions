@@ -82,6 +82,9 @@ section { padding: 26px 0; }
 .btn-navy:hover { background: var(--blue-dark); }
 .btn-white { background: #fff; color: var(--blue); }
 .btn-white:hover { background: var(--blue-tint); }
+.btn-wa { background: #1fa855; color: #fff; }
+.btn-wa:hover { background: #179147; }
+.btn-wa svg { width: 18px; height: 18px; stroke: #fff; }
 
 /* ============================================================
    Utility bar
@@ -325,6 +328,23 @@ section { padding: 26px 0; }
 .tile svg { width: 30px; height: 30px; stroke: var(--blue); margin: 0 auto 8px; }
 .tile strong { display: block; font-size: 12.5px; }
 .tile span { font-size: 11px; color: var(--ink-soft); }
+
+/* ============================================================
+   Services grid
+   ============================================================ */
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px;
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+.service-card svg { width: 26px; height: 26px; stroke: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.service-card strong { display: block; font-size: 14px; margin-bottom: 3px; }
+.service-card p { font-size: 12.5px; color: var(--ink-soft); }
 
 /* ============================================================
    Product cards — white, dense, photo-led
@@ -663,6 +683,7 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
   .filters { position: static; }
   .listing-grid .product-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
   .sell-band { flex-direction: column; align-items: flex-start; }
   .detail-grid { grid-template-columns: 1fr; }
   .buy-box { grid-column: auto; }
@@ -675,6 +696,7 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
   .utility-links { display: none; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
   .trust-item span { display: none; }
+  .service-grid { grid-template-columns: 1fr; }
   .price { font-size: 14px; }
   .hero-points { gap: 16px; }
 }

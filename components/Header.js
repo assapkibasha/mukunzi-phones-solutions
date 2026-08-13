@@ -10,10 +10,10 @@ export default function Header() {
         <div className="container">
           <span>Murakaza neza — open Mon–Sat 8:00–19:00 · Kigali delivery, provinces on request</span>
           <nav className="utility-links" aria-label="Utility">
-            <a href="#">Help Center</a>
-            <a href="#">Track order</a>
+            <a href="tel:+250780285043">Call / WhatsApp: 0780 285 043</a>
             <span className="divider">|</span>
-            <a href="#">EN</a>
+            <a href="https://www.instagram.com/mukunziphonessolutions" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@mukunziphonesssolutions" target="_blank" rel="noopener">TikTok</a>
           </nav>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function Header() {
             />
             <span>
               <span className="logo-name">MPS</span>
-              <span className="logo-tag">Mukunzi Phones Solution</span>
+              <span className="logo-tag">Mukunzi Phones Solutions</span>
             </span>
           </Link>
 

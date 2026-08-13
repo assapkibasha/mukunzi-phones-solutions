@@ -8,8 +8,9 @@ export default function Footer() {
           <div className="footer-brand">
             <span className="logo-name">MPS</span>
             <p>
-              Mukunzi Phones Solution — genuine phones &amp; electronics in Kigali, Rwanda.
-              Pay with mobile money, delivered to your door.
+              Mukunzi Phones Solutions — phones that power your life.
+              Genuine phones &amp; electronics in Kigali, Rwanda. Pay with
+              mobile money, delivered to your door.
             </p>
           </div>
           <div>
@@ -23,27 +24,28 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Support</h4>
+            <h4>Contact</h4>
             <ul>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Track your order</a></li>
-              <li><a href="#">Returns &amp; refunds</a></li>
-              <li><a href="#">Warranty</a></li>
-              <li><a href="#">Contact us</a></li>
+              <li><a href="tel:+250780285043">Call: 0780 285 043</a></li>
+              <li><a href="https://wa.me/250780285043" target="_blank" rel="noopener">WhatsApp us</a></li>
+              <li><a href="https://www.instagram.com/mukunziphonessolutions" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@mukunziphonesssolutions" target="_blank" rel="noopener">TikTok</a></li>
+              <li>Kigali, Rwanda</li>
             </ul>
           </div>
           <div>
-            <h4>Company</h4>
+            <h4>Services</h4>
             <ul>
-              <li><a href="#">About MPS</a></li>
-              <li><a href="#">Delivery &amp; fees</a></li>
-              <li><a href="#">Privacy policy</a></li>
-              <li><a href="#">Terms of service</a></li>
+              <li>Phone sales &amp; buying</li>
+              <li>Trade-in (top up)</li>
+              <li>Installment plans on iPhones</li>
+              <li>Phone repair</li>
+              <li>Laptops, cameras &amp; accessories</li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 MPS — Mukunzi Phones Solution · Kigali, Rwanda</span>
+          <span>© 2026 MPS — Mukunzi Phones Solutions · Kigali, Rwanda</span>
           <div className="footer-pay">
             <span>Pay with</span>
             <span className="momo-badge mtn">MTN MoMo</span>

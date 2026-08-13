@@ -202,6 +202,45 @@ export function IconRouter(props) {
   );
 }
 
+export function IconWrench(props) {
+  return (
+    <Svg {...props}>
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </Svg>
+  );
+}
+
+export function IconSwap(props) {
+  return (
+    <Svg {...props}>
+      <polyline points="17 1 21 5 17 9" />
+      <path d="M21 5H9a4 4 0 0 0-4 4v1" />
+      <polyline points="7 23 3 19 7 15" />
+      <path d="M3 19h12a4 4 0 0 0 4-4v-1" />
+    </Svg>
+  );
+}
+
+export function IconCash(props) {
+  return (
+    <Svg {...props}>
+      <rect x="2" y="6" width="20" height="12" rx="2" />
+      <circle cx="12" cy="12" r="2.5" />
+      <line x1="5.5" y1="12" x2="5.5" y2="12.01" />
+      <line x1="18.5" y1="12" x2="18.5" y2="12.01" />
+    </Svg>
+  );
+}
+
+export function IconWhatsApp(props) {
+  return (
+    <Svg {...props}>
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.36 7.57L3 21l1.95-5.6A8.5 8.5 0 1 1 21 11.5z" />
+      <path d="M8.8 8.9c0 4 2.7 6.3 6.1 6.6l1.4-1.4-2-1.3-1.1.7c-1-.5-1.9-1.4-2.3-2.4l.7-1-1.3-2-1.5.8z" />
+    </Svg>
+  );
+}
+
 export function IconCamera(props) {
   return (
     <Svg {...props}>

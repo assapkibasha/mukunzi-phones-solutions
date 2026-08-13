@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import BuyControls from "@/components/BuyControls";
 import { products, findProduct, formatRWF, productImage } from "@/lib/products";
-import { IconTruck, IconPin, IconCard, IconShield } from "@/components/Icons";
+import { IconTruck, IconPin, IconCard, IconShield, IconWhatsApp } from "@/components/Icons";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -77,6 +77,19 @@ export default async function ProductPage({ params }) {
           </ul>
 
           <BuyControls stock={product.stock} />
+          <a
+            className="btn btn-wa"
+            style={{ width: "100%", marginTop: 10 }}
+            href={
+              "https://wa.me/250780285043?text=" +
+              encodeURIComponent("Muraho MPS, I want to order: " + product.title)
+            }
+            target="_blank"
+            rel="noopener"
+          >
+            <IconWhatsApp />
+            Order on WhatsApp — 0780 285 043
+          </a>
         </div>
 
         {/* Buy box */}
@@ -106,11 +119,27 @@ export default async function ProductPage({ params }) {
               </div>
             </div>
           </div>
+          {product.brand === "Apple" && (
+            <div className="delivery-item">
+              <IconCard />
+              <div>
+                <strong>Pay in installments</strong>
+                <span>40–50% deposit, balance over 2 months</span>
+              </div>
+            </div>
+          )}
+          <div className="delivery-item">
+            <IconShield />
+            <div>
+              <strong>Trade-in accepted</strong>
+              <span>Bring your old phone, pay the difference</span>
+            </div>
+          </div>
           <div className="delivery-item">
             <IconShield />
             <div>
               <strong>Sold by MPS</strong>
-              <span>Mukunzi Phones Solution · Kigali</span>
+              <span>Mukunzi Phones Solutions · Kigali</span>
             </div>
           </div>
         </aside>

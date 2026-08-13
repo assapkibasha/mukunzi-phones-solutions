@@ -18,11 +18,11 @@ const archivoBlack = Archivo_Black({
 
 export const metadata = {
   title: {
-    default: "MPS — Mukunzi Phones Solution",
+    default: "MPS — Mukunzi Phones Solutions",
     template: "%s — MPS",
   },
   description:
-    "Genuine phones, laptops, TVs and electronics in Kigali, Rwanda. Pay with MTN MoMo or Airtel Money — delivered to your door.",
+    "Mukunzi Phones Solutions — phones that power your life. Genuine phones, laptops and electronics in Kigali, Rwanda. Installments on iPhones, trade-in welcome, pay with MTN MoMo or Airtel Money. Call 0780 285 043.",
 };
 
 export default function RootLayout({ children }) {
