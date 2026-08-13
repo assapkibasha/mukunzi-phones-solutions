@@ -19,6 +19,7 @@ import {
   IconSwap,
   IconCash,
   IconWhatsApp,
+  IconPin,
 } from "@/components/Icons";
 
 const serviceIcons = {
@@ -89,17 +90,22 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-visual" aria-hidden="true">
+          <div className="hero-visual">
             <div className="swoosh" />
             <div className="swoosh swoosh-2" />
-            <Link className="hero-card hero-card-back" href={"/product/" + heroPhone.slug}>
-              <Image src={productImage(heroPhone)} alt="" width={180} height={170} priority />
-              <strong>{heroPhone.title.split("—")[0].trim()}</strong>
-              <span className="price">{formatRWF(heroPhone.price)}</span>
-            </Link>
+            <div className="hero-photo">
+              <Image
+                src="/photos/hero-man.jpg"
+                alt="A happy customer showing his new phone"
+                fill
+                sizes="(max-width: 900px) 300px, 360px"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
             <Link className="hero-card hero-card-front" href={"/product/" + heroDeal.slug}>
               <span className="deal-flag">{heroDeal.off}</span>
-              <Image src={productImage(heroDeal)} alt="" width={180} height={170} priority />
+              <Image src={productImage(heroDeal)} alt="" width={180} height={150} priority />
               <strong>{heroDeal.title.split("—")[0].trim()}</strong>
               <span className="price">{formatRWF(heroDeal.price)}</span>
             </Link>
@@ -254,6 +260,108 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Customer feedback */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
+            <h2>What customers say</h2>
+          </div>
+          <div className="feedback-grid">
+            <article className="feedback-card">
+              <div className="feedback-head">
+                <div className="feedback-photo">
+                  <Image src="/photos/feedback-claudine.jpg" alt="Claudine" fill sizes="56px" style={{ objectFit: "cover" }} />
+                </div>
+                <div>
+                  <strong>Claudine U.</strong>
+                  <span>Kicukiro, Kigali</span>
+                </div>
+                <span className="rating">★★★★★</span>
+              </div>
+              <p>
+                "I paid 50% for my iPhone 13 and finished the rest in two months.
+                They even moved my WhatsApp and photos to the new phone before I left."
+              </p>
+            </article>
+            <article className="feedback-card">
+              <div className="feedback-head">
+                <div className="feedback-photo">
+                  <Image src="/photos/feedback-eric.jpg" alt="Eric" fill sizes="56px" style={{ objectFit: "cover" }} />
+                </div>
+                <div>
+                  <strong>Eric N.</strong>
+                  <span>Remera, Kigali</span>
+                </div>
+                <span className="rating">★★★★★</span>
+              </div>
+              <p>
+                "Ordered a Tecno Spark 20 at lunch time — it arrived sealed before 6 PM.
+                We unboxed it together with the delivery guy so I could check everything."
+              </p>
+            </article>
+            <article className="feedback-card">
+              <div className="feedback-head">
+                <div className="feedback-photo">
+                  <Image src="/photos/feedback-diane.jpg" alt="Diane" fill sizes="56px" style={{ objectFit: "cover" }} />
+                </div>
+                <div>
+                  <strong>Diane M.</strong>
+                  <span>Nyarugenge, Kigali</span>
+                </div>
+                <span className="rating">★★★★★</span>
+              </div>
+              <p>
+                "I brought my old Samsung as a top-up and paid only the difference for
+                a new one. They valued it in front of me — fair price, no stories."
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div className="faq-grid">
+            <div className="faq-item">
+              <h3>Are your phones genuine?</h3>
+              <p>Yes — every phone is brand new, sealed, and from official distributors, with a 12-month warranty. We open the box together with you.</p>
+            </div>
+            <div className="faq-item">
+              <h3>Can I pay in installments?</h3>
+              <p>Yes, on iPhones: pay a 40–50% deposit, take the phone home the same day, and pay the balance over 2 months. Bring your national ID.</p>
+            </div>
+            <div className="faq-item">
+              <h3>How do I pay?</h3>
+              <p>MTN MoMo, Airtel Money, or cash in the shop. We don't take cards at the moment.</p>
+            </div>
+            <div className="faq-item">
+              <h3>Do you deliver outside Kigali?</h3>
+              <p>Yes — provinces are served on request, usually 2–4 days. The delivery fee depends on your district. Kigali is same-day or next-day from RWF 1,500.</p>
+            </div>
+            <div className="faq-item">
+              <h3>Can I trade in my old phone?</h3>
+              <p>Yes. We test and value it on the spot (all brands), and the value comes off the price of your new phone. You can also just sell it to us for cash or MoMo.</p>
+            </div>
+            <div className="faq-item">
+              <h3>Do you repair phones?</h3>
+              <p>Yes — screens, batteries, charging ports and software. Free diagnosis, and most repairs are done the same day.</p>
+            </div>
+            <div className="faq-item">
+              <h3>Where is the shop?</h3>
+              <p>KN 84 St, Kigali — open Mon–Sat, 8:00–19:00. Or skip the trip: order on WhatsApp at 0780 285 043 and we deliver.</p>
+            </div>
+            <div className="faq-item">
+              <h3>What if my phone has a problem?</h3>
+              <p>Bring it back — sealed phones carry a 12-month warranty. Keep your receipt; we handle the rest.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Sourcing CTA */}
       <section style={{ paddingTop: 4 }}>
         <div className="container">
@@ -269,6 +377,62 @@ export default function HomePage() {
               <IconWhatsApp />
               WhatsApp: 0780 285 043
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Visit the shop */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
+            <h2>Visit the shop</h2>
+          </div>
+          <div className="visit-grid">
+            <div className="map-frame">
+              <iframe
+                src="https://www.google.com/maps?q=KN+84+St,+Kigali,+Rwanda&output=embed"
+                title="MPS shop location — KN 84 St, Kigali"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <div className="visit-card">
+              <h3>MPS — Mukunzi Phones Solutions</h3>
+              <div className="visit-line">
+                <IconPin />
+                <div>
+                  <strong>KN 84 St, Kigali</strong>
+                  <span>Come test any phone before you buy</span>
+                </div>
+              </div>
+              <div className="visit-line">
+                <IconReturn />
+                <div>
+                  <strong>Mon–Sat, 8:00–19:00</strong>
+                  <span>Closed on Sundays</span>
+                </div>
+              </div>
+              <div className="visit-line">
+                <IconCard />
+                <div>
+                  <strong>0780 285 043</strong>
+                  <span>Call or WhatsApp, we reply fast</span>
+                </div>
+              </div>
+              <a
+                className="btn btn-blue"
+                href="https://www.google.com/maps/search/?api=1&query=KN+84+St,+Kigali,+Rwanda"
+                target="_blank"
+                rel="noopener"
+              >
+                Get directions
+              </a>
+              <a className="btn btn-wa" href="https://wa.me/250780285043" target="_blank" rel="noopener">
+                <IconWhatsApp />
+                Order on WhatsApp instead
+              </a>
+            </div>
           </div>
         </div>
       </section>

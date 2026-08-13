@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { services, findService } from "@/lib/services";
@@ -69,6 +70,16 @@ export default async function ServicePage({ params }) {
 
         <div className="service-body">
           <div>
+            <div className="service-photo">
+              <Image
+                src={service.photo}
+                alt={service.photoAlt}
+                fill
+                sizes="(max-width: 900px) 100vw, 900px"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
             <p className="service-intro">{service.intro}</p>
 
             <h2>How it works</h2>

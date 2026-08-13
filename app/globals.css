@@ -303,21 +303,31 @@ section { padding: 26px 0; }
   bottom: 10px;
   right: auto;
 }
+.hero-photo {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  right: 5px;
+  top: 15px;
+  border: 6px solid #fff;
+  box-shadow: 0 16px 38px rgba(18, 37, 89, 0.22);
+}
 .hero-card {
   position: absolute;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 16px 38px rgba(18, 37, 89, 0.22);
   padding: 14px 14px 12px;
-  width: 200px;
+  width: 185px;
   transition: transform 0.15s;
 }
-.hero-card img { height: 165px; width: auto; object-fit: contain; margin: 0 auto 8px; }
+.hero-card img { height: 145px; width: auto; object-fit: contain; margin: 0 auto 8px; }
 .hero-card strong { display: block; font-size: 12.5px; line-height: 1.3; }
 .hero-card .price { font-size: 14px; }
 .hero-card .deal-flag { top: 10px; left: 10px; }
-.hero-card-back { right: 175px; top: 25px; transform: rotate(-4deg); }
-.hero-card-front { right: 20px; top: 75px; transform: rotate(3deg); }
+.hero-card-front { left: 0; bottom: 0; transform: rotate(-3deg); }
 .hero-card:hover { transform: rotate(0deg) translateY(-4px); }
 .float-chip {
   position: absolute;
@@ -334,8 +344,8 @@ section { padding: 26px 0; }
   white-space: nowrap;
 }
 .float-chip svg { width: 15px; height: 15px; stroke: var(--blue); }
-.chip-installment { left: -10px; bottom: 55px; }
-.chip-trade { left: 30px; top: 8px; }
+.chip-installment { right: -5px; bottom: 30px; }
+.chip-trade { left: 55px; top: 0; }
 
 /* ============================================================
    Trust strip
@@ -469,6 +479,84 @@ section { padding: 26px 0; }
 
 .active-filter a { color: var(--blue); font-weight: 700; }
 .filter-group label a:hover { color: var(--blue); text-decoration: underline; }
+
+.service-photo {
+  position: relative;
+  aspect-ratio: 5 / 2;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+}
+
+/* ============================================================
+   Customer feedback
+   ============================================================ */
+.feedback-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.feedback-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px;
+}
+.feedback-head { display: flex; align-items: center; gap: 11px; margin-bottom: 10px; }
+.feedback-photo {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.feedback-head strong { display: block; font-size: 13.5px; }
+.feedback-head span:not(.rating) { font-size: 12px; color: var(--ink-soft); }
+.feedback-head .rating { margin-left: auto; }
+.feedback-card > p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ============================================================
+   FAQs
+   ============================================================ */
+.faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 15px 17px;
+}
+.faq-item h3 { font-size: 14px; margin-bottom: 5px; }
+.faq-item p { font-size: 13px; color: var(--ink-soft); }
+
+/* ============================================================
+   Visit the shop (map + info)
+   ============================================================ */
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.map-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  min-height: 380px;
+}
+.map-frame iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+.visit-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.visit-card h3 { font-size: 15px; margin-bottom: 8px; }
+.visit-line { display: flex; gap: 11px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.visit-line svg { width: 20px; height: 20px; stroke: var(--blue); flex-shrink: 0; }
+.visit-line strong { display: block; font-size: 13.5px; }
+.visit-line span { color: var(--ink-soft); font-size: 12.5px; }
+.visit-card .btn { margin-top: 10px; width: 100%; }
 
 /* ============================================================
    Product cards — white, dense, photo-led
@@ -800,16 +888,21 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
   .main-header .container { flex-wrap: wrap; gap: 12px; }
   .search-form { order: 3; min-width: 100%; max-width: none; }
   .hero-inner { grid-template-columns: 1fr; gap: 30px; padding-block: 30px; }
-  .hero-visual { height: 330px; max-width: 440px; margin-inline: auto; width: 100%; }
+  .hero-visual { height: 340px; max-width: 440px; margin-inline: auto; width: 100%; }
   .swoosh { width: 320px; height: 320px; right: 0; }
-  .hero-card { width: 175px; }
-  .hero-card img { height: 135px; }
-  .hero-card-back { right: auto; left: 15px; top: 30px; }
-  .hero-card-front { right: 15px; top: 70px; }
-  .chip-installment { left: 0; bottom: 12px; }
+  .hero-photo { width: 290px; height: 290px; right: 10px; top: 10px; }
+  .hero-card { width: 165px; }
+  .hero-card img { height: 120px; }
+  .hero-card-front { left: 0; bottom: 0; }
+  .chip-installment { right: 0; bottom: 10px; }
   .chip-trade { display: none; }
   .service-body { grid-template-columns: 1fr; }
   .service-cta { position: static; }
+  .feedback-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .map-frame { min-height: 280px; }
+  .map-frame iframe { min-height: 280px; }
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .listing-grid { grid-template-columns: 1fr; }

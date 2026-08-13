@@ -30,7 +30,8 @@ export default function Footer() {
               <li><a href="https://wa.me/250780285043" target="_blank" rel="noopener">WhatsApp us</a></li>
               <li><a href="https://www.instagram.com/mukunziphonessolutions" target="_blank" rel="noopener">Instagram</a></li>
               <li><a href="https://www.tiktok.com/@mukunziphonesssolutions" target="_blank" rel="noopener">TikTok</a></li>
-              <li>Kigali, Rwanda</li>
+              <li>KN 84 St, Kigali, Rwanda</li>
+              <li>Mon–Sat, 8:00–19:00</li>
             </ul>
           </div>
           <div>
