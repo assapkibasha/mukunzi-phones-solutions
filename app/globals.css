@@ -244,108 +244,150 @@ section { padding: 26px 0; }
 .deal-chip:hover { border-color: var(--sale); color: var(--sale); background: #fbeae7; }
 
 /* ============================================================
-   Hero — light, flyer-style swoosh, product cards
+   Hero carousel — sliding promo banners
    ============================================================ */
-.hero {
-  background:
-    radial-gradient(900px 420px at 88% -10%, #d9edfb 0%, rgba(217, 237, 251, 0) 60%),
-    linear-gradient(180deg, #f9fbfd 0%, #eef2f8 100%);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.hero-inner {
+
+.carousel { padding: 14px 0 4px; }
+.car-wrap { position: relative; }
+.car-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: 8px;
+}
+.car-track::-webkit-scrollbar { display: none; }
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-height: 380px;
+  position: relative;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  padding-block: 46px 42px;
+  overflow: hidden;
 }
-.hero-copy .eyebrow {
-  font-size: 11px;
+.slide-copy { padding: 40px 56px; position: relative; z-index: 2; }
+.slide-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--blue);
   margin-bottom: 10px;
 }
-.hero-copy h1 {
+.slide-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(28px, 2.8vw, 42px);
-  line-height: 1.1;
+  font-size: clamp(24px, 2.6vw, 37px);
+  line-height: 1.12;
   letter-spacing: -0.01em;
-  margin-bottom: 14px;
-  max-width: 18ch;
+  margin-bottom: 12px;
+  max-width: 19ch;
 }
-.hero-copy > p { color: var(--ink-soft); margin-bottom: 22px; font-size: 15.5px; max-width: 54ch; }
-.hero-cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.hero-proof { display: flex; gap: 28px; margin-top: 26px; flex-wrap: wrap; }
-.hero-proof div { font-size: 12.5px; color: var(--ink-soft); }
-.hero-proof strong { display: block; color: var(--ink); font-size: 13.5px; }
-
-.hero-visual { position: relative; height: 400px; }
-.swoosh {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #5fc2f1 0%, #2c4cb0 100%);
-  right: -30px;
-  top: -20px;
-}
-.swoosh-2 {
-  width: 130px;
-  height: 130px;
-  background: #c8e7f9;
-  left: 10px;
-  top: auto;
-  bottom: 10px;
-  right: auto;
-}
-.hero-photo {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  overflow: hidden;
-  right: 5px;
-  top: 15px;
-  border: 6px solid #fff;
-  box-shadow: 0 16px 38px rgba(18, 37, 89, 0.22);
-}
-.hero-card {
-  position: absolute;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 16px 38px rgba(18, 37, 89, 0.22);
-  padding: 14px 14px 12px;
-  width: 185px;
-  transition: transform 0.15s;
-}
-.hero-card img { height: 145px; width: auto; object-fit: contain; margin: 0 auto 8px; }
-.hero-card strong { display: block; font-size: 12.5px; line-height: 1.3; }
-.hero-card .price { font-size: 14px; }
-.hero-card .deal-flag { top: 10px; left: 10px; }
-.hero-card-front { left: 0; bottom: 0; transform: rotate(-3deg); }
-.hero-card:hover { transform: rotate(0deg) translateY(-4px); }
-.float-chip {
-  position: absolute;
-  display: inline-flex;
+.slide-sub { font-size: 15px; max-width: 48ch; margin-bottom: 20px; }
+.slide-media {
+  position: relative;
+  height: 100%;
+  display: flex;
   align-items: center;
-  gap: 7px;
-  background: #fff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lift);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 12.5px;
-  font-weight: 700;
-  white-space: nowrap;
+  justify-content: center;
+  padding: 28px 40px;
 }
-.float-chip svg { width: 15px; height: 15px; stroke: var(--blue); }
-.chip-installment { right: -5px; bottom: 30px; }
-.chip-trade { left: 55px; top: 0; }
+.slide-media img {
+  max-height: 290px;
+  width: auto;
+  object-fit: contain;
+  background: #fff;
+  padding: 18px 26px;
+  border-radius: 10px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+}
+
+.slide-navy {
+  background: linear-gradient(105deg, #122559 0%, #1f3a8c 55%, #2c4cb0 100%);
+  color: #fff;
+}
+.slide-navy .slide-eyebrow { color: #9db2e4; }
+.slide-navy .slide-sub { color: #ccd6f1; }
+.slide-navy .slide-media { background: radial-gradient(280px 280px at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%); }
+
+.slide-light {
+  background:
+    radial-gradient(700px 380px at 82% 15%, #d9edfb 0%, rgba(217, 237, 251, 0) 65%),
+    linear-gradient(180deg, #f9fbfd 0%, #e8eef7 100%);
+  color: var(--ink);
+}
+.slide-light .slide-eyebrow { color: var(--blue); }
+.slide-light .slide-sub { color: var(--ink-soft); }
+
+.slide-photo { grid-template-columns: 1fr; color: #fff; }
+.slide-photo .slide-copy { max-width: 640px; }
+.slide-bg { z-index: 0; }
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(18, 37, 89, 0.9) 0%, rgba(18, 37, 89, 0.62) 48%, rgba(18, 37, 89, 0.18) 100%);
+}
+.slide-photo .slide-eyebrow { color: #aec2ef; }
+.slide-photo .slide-sub { color: #dde5f6; }
+
+.car-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-lift);
+  color: var(--blue);
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding-bottom: 3px;
+}
+.car-arrow:hover { background: #fff; }
+.car-prev { left: 14px; }
+.car-next { right: 14px; }
+
+.car-dots {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 3;
+}
+.car-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(18, 37, 89, 0.35);
+  padding: 0;
+  transition: width 0.2s, background 0.2s;
+}
+.car-dots button.active { width: 24px; background: var(--blue); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6); }
 
 /* ============================================================
    Trust strip
@@ -887,15 +929,17 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
 @media (max-width: 900px) {
   .main-header .container { flex-wrap: wrap; gap: 12px; }
   .search-form { order: 3; min-width: 100%; max-width: none; }
-  .hero-inner { grid-template-columns: 1fr; gap: 30px; padding-block: 30px; }
-  .hero-visual { height: 340px; max-width: 440px; margin-inline: auto; width: 100%; }
-  .swoosh { width: 320px; height: 320px; right: 0; }
-  .hero-photo { width: 290px; height: 290px; right: 10px; top: 10px; }
-  .hero-card { width: 165px; }
-  .hero-card img { height: 120px; }
-  .hero-card-front { left: 0; bottom: 0; }
-  .chip-installment { right: 0; bottom: 10px; }
-  .chip-trade { display: none; }
+  .slide { grid-template-columns: 1fr; min-height: 440px; align-content: end; }
+  .slide-copy { padding: 24px 22px 46px; order: 2; }
+  .slide-media { height: 185px; padding: 22px 0 0; order: 1; }
+  .slide-media img { max-height: 165px; }
+  .slide-title { font-size: clamp(22px, 5.6vw, 28px); }
+  .slide-sub { font-size: 14px; }
+  .slide-photo .slide-copy { padding-top: 40px; }
+  .slide-overlay {
+    background: linear-gradient(180deg, rgba(18, 37, 89, 0.15) 0%, rgba(18, 37, 89, 0.55) 45%, rgba(18, 37, 89, 0.9) 100%);
+  }
+  .car-arrow { display: none; }
   .service-body { grid-template-columns: 1fr; }
   .service-cta { position: static; }
   .feedback-grid { grid-template-columns: 1fr; }

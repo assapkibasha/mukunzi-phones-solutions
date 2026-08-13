@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-import { bySlugs, findProduct, formatRWF, productImage, products } from "@/lib/products";
+import HeroCarousel from "@/components/HeroCarousel";
+import { bySlugs, products } from "@/lib/products";
 import { services } from "@/lib/services";
 import {
   IconShield,
@@ -60,66 +61,12 @@ const brands = [
 
 export default function HomePage() {
   const deals = products.filter((p) => p.off);
-  const heroPhone = findProduct("iphone-16-pro-max");
-  const heroDeal = findProduct("tecno-spark-20");
 
   return (
     <main>
-      {/* Hero */}
-      <section className="hero">
-        <div className="container hero-inner">
-          <div className="hero-copy">
-            <p className="eyebrow">Phones that power your life</p>
-            <h1>Get a genuine phone today — pay your way.</h1>
-            <p>
-              Sealed phones with a 12-month warranty. Pay in full with mobile money,
-              take an iPhone with a 40–50% deposit, or trade in your old phone and
-              top up the difference.
-            </p>
-            <div className="hero-cta-row">
-              <Link className="btn btn-blue" href="/products?category=phones">Browse phones</Link>
-              <a className="btn btn-wa" href="https://wa.me/250780285043" target="_blank" rel="noopener">
-                <IconWhatsApp />
-                WhatsApp us
-              </a>
-            </div>
-            <div className="hero-proof">
-              <div><strong>2,000+ phones sold</strong>in Kigali and beyond</div>
-              <div><strong>Same-day delivery</strong>order before 3 PM</div>
-              <div><strong>12-month warranty</strong>on every sealed phone</div>
-            </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="swoosh" />
-            <div className="swoosh swoosh-2" />
-            <div className="hero-photo">
-              <Image
-                src="/photos/hero-man.jpg"
-                alt="A happy customer showing his new phone"
-                fill
-                sizes="(max-width: 900px) 300px, 360px"
-                style={{ objectFit: "cover" }}
-                priority
-              />
-            </div>
-            <Link className="hero-card hero-card-front" href={"/product/" + heroDeal.slug}>
-              <span className="deal-flag">{heroDeal.off}</span>
-              <Image src={productImage(heroDeal)} alt="" width={180} height={150} priority />
-              <strong>{heroDeal.title.split("—")[0].trim()}</strong>
-              <span className="price">{formatRWF(heroDeal.price)}</span>
-            </Link>
-            <span className="float-chip chip-installment">
-              <IconCard />
-              40–50% deposit, rest in 2 months
-            </span>
-            <span className="float-chip chip-trade">
-              <IconSwap />
-              Trade-in welcome
-            </span>
-          </div>
-        </div>
-      </section>
+      {/* Hero slider */}
+      <h1 className="sr-only">MPS — Mukunzi Phones Solutions. Genuine phones in Kigali: installments, trade-in, same-day delivery.</h1>
+      <HeroCarousel />
 
       {/* Trust strip */}
       <div className="trust">
