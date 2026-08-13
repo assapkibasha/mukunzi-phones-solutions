@@ -1,14 +1,20 @@
 import Link from "next/link";
-import ProductArt from "@/components/ProductArt";
+import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
-import { formatRWF } from "@/lib/products";
+import { formatRWF, productImage } from "@/lib/products";
 
 export default function ProductCard({ product, withButton = true }) {
   return (
     <article className="product-card">
       {product.off && <span className="deal-flag">{product.off}</span>}
       <div className="product-thumb">
-        <ProductArt kind={product.art} />
+        <Image
+          src={productImage(product)}
+          alt={product.title}
+          fill
+          sizes="(max-width: 620px) 50vw, (max-width: 1200px) 25vw, 300px"
+          style={{ objectFit: "contain", padding: 14 }}
+        />
       </div>
       <div className="product-body">
         <h3 className="product-title">

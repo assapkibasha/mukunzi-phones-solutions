@@ -8,7 +8,7 @@ export default function Header() {
     <>
       <div className="utility-bar">
         <div className="container">
-          <span>Murakaza neza! We deliver across Kigali — provinces on request (delivery fees apply)</span>
+          <span>Murakaza neza — open Mon–Sat 8:00–19:00 · Kigali delivery, provinces on request</span>
           <nav className="utility-links" aria-label="Utility">
             <a href="#">Help Center</a>
             <a href="#">Track order</a>
@@ -40,7 +40,8 @@ export default function Header() {
               <option value="all">All categories</option>
               <option value="phones">Phones &amp; Tablets</option>
               <option value="computers">Computers &amp; Laptops</option>
-              <option value="tv">TV &amp; Audio</option>
+              <option value="audio">Audio &amp; Sound</option>
+              <option value="wearables">Wearables</option>
               <option value="gaming">Gaming</option>
               <option value="power">Power &amp; Accessories</option>
             </select>
@@ -72,9 +73,9 @@ export default function Header() {
             All categories
           </button>
           <Link href="/products">Phones &amp; Tablets</Link>
-          <Link href="/products">Computers</Link>
-          <Link href="/products">TV &amp; Audio</Link>
-          <Link href="/products">Audio</Link>
+          <Link href="/products">Computers &amp; Laptops</Link>
+          <Link href="/products">Audio &amp; Sound</Link>
+          <Link href="/products">Wearables</Link>
           <Link href="/products">Gaming</Link>
           <Link href="/products">Power &amp; Accessories</Link>
           <Link href="/products">Networking</Link>

@@ -17,7 +17,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/products">Phones &amp; Tablets</Link></li>
               <li><Link href="/products">Computers &amp; Laptops</Link></li>
-              <li><Link href="/products">TV &amp; Audio</Link></li>
+              <li><Link href="/products">Audio &amp; Sound</Link></li>
               <li><Link href="/products">Power &amp; Accessories</Link></li>
               <li><Link href="/products">Today's Deals</Link></li>
             </ul>

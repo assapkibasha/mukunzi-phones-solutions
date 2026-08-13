@@ -1,10 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import ProductArt from "@/components/ProductArt";
 import ProductCard from "@/components/ProductCard";
 import BuyControls from "@/components/BuyControls";
-import GalleryThumbs from "@/components/GalleryThumbs";
-import { products, findProduct, formatRWF } from "@/lib/products";
+import { products, findProduct, formatRWF, productImage } from "@/lib/products";
 import { IconTruck, IconPin, IconCard, IconShield } from "@/components/Icons";
 
 export function generateStaticParams() {
@@ -26,7 +25,7 @@ export default async function ProductPage({ params }) {
   const similar = products
     .filter((p) => p.slug !== product.slug && p.category === product.category)
     .concat(products.filter((p) => p.slug !== product.slug && p.category !== product.category))
-    .slice(0, 4);
+    .slice(0, 6);
 
   return (
     <main>
@@ -40,16 +39,16 @@ export default async function ProductPage({ params }) {
       </div>
 
       <div className="container detail-grid">
-        {/* Gallery */}
-        <div>
-          <div className="gallery-main">
-            <ProductArt kind={product.art} strokeWidth={3} />
-          </div>
-          <GalleryThumbs>
-            <ProductArt kind={product.art} strokeWidth={5} />
-            <ProductArt kind={product.art} strokeWidth={5} />
-            <ProductArt kind={product.art} strokeWidth={5} />
-          </GalleryThumbs>
+        {/* Photo */}
+        <div className="gallery-main">
+          <Image
+            src={productImage(product)}
+            alt={product.title}
+            fill
+            sizes="(max-width: 900px) 100vw, 520px"
+            style={{ objectFit: "contain", padding: 28 }}
+            priority
+          />
         </div>
 
         {/* Info */}

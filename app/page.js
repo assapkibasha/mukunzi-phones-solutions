@@ -1,125 +1,92 @@
 import Link from "next/link";
+import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-import { bySlugs } from "@/lib/products";
+import AddToCartButton from "@/components/AddToCartButton";
+import { bySlugs, findProduct, formatRWF, productImage, products } from "@/lib/products";
 import {
-  IconArrow,
   IconShield,
   IconTruck,
   IconCard,
   IconReturn,
   IconPhone,
   IconLaptop,
-  IconTv,
   IconGamepad,
   IconZap,
   IconHeadphones,
   IconWatch,
-  IconRouter,
-  IconCamera,
 } from "@/components/Icons";
-
-const railCategories = [
-  { label: "Phones & Tablets", icon: IconPhone },
-  { label: "Computers & Laptops", icon: IconLaptop },
-  { label: "TV & Audio", icon: IconTv },
-  { label: "Audio & Headphones", icon: IconHeadphones },
-  { label: "Gaming", icon: IconGamepad },
-  { label: "Power & Accessories", icon: IconZap },
-  { label: "Watches & Wearables", icon: IconWatch },
-  { label: "Networking", icon: IconRouter },
-  { label: "Cameras", icon: IconCamera },
-];
 
 const tiles = [
   { label: "Phones & Tablets", from: "from RWF 85,000", icon: IconPhone },
-  { label: "Computers", from: "from RWF 720,000", icon: IconLaptop },
-  { label: "TV & Audio", from: "from RWF 320,000", icon: IconTv },
-  { label: "Audio", from: "from RWF 28,000", icon: IconHeadphones },
+  { label: "Computers & Laptops", from: "from RWF 720,000", icon: IconLaptop },
+  { label: "Audio & Sound", from: "from RWF 28,000", icon: IconHeadphones },
+  { label: "Wearables", from: "from RWF 55,000", icon: IconWatch },
   { label: "Gaming", from: "from RWF 95,000", icon: IconGamepad },
-  { label: "Power & Accessories", from: "from RWF 35,000", icon: IconZap },
+  { label: "Power & Networking", from: "from RWF 35,000", icon: IconZap },
 ];
-
-const deals = ["tecno-spark-20", "hisense-43-smart-tv", "jbl-flip-6", "anker-powercore-20000"];
 
 const bestSellers = [
   "samsung-galaxy-a16",
-  "hp-laptop-15",
+  "tecno-camon-30",
   "oraimo-freepods-4",
+  "hp-laptop-15",
+  "samsung-galaxy-tab-a9",
   "tp-link-archer-c6",
   "oraimo-watch-5-lite",
-  "infinix-hot-40i",
-  "lg-55-uhd-tv",
+  "itel-a70",
+  "infinix-note-40",
   "dualsense-controller",
 ];
 
 const brands = [
   "Samsung", "Tecno", "Infinix", "itel", "Xiaomi", "HP",
-  "Hisense", "LG", "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
+  "Sony", "JBL", "Oraimo", "Anker", "TP-Link",
 ];
 
 export default function HomePage() {
+  const deals = products.filter((p) => p.off);
+  const heroDeal = findProduct("tecno-spark-20");
+
   return (
     <main>
-      {/* Hero */}
+      {/* Hero — concrete offer, full-width band */}
       <section className="hero">
-        <div className="container hero-grid">
-          <aside className="cat-rail" aria-label="Browse categories">
-            {railCategories.map(({ label, icon: Icon }) => (
-              <Link key={label} href="/products">
-                <Icon />
-                {label}
-              </Link>
-            ))}
+        <div className="container hero-inner">
+          <div className="hero-copy">
+            <p className="eyebrow">Phones &amp; electronics · Kigali</p>
+            <h1>New phones, genuine stock, Kigali delivery.</h1>
+            <p>
+              Tecno, Samsung, Infinix, itel and Xiaomi from official distributors —
+              sealed in the box with a 12-month warranty. Pay with MTN MoMo or Airtel Money.
+            </p>
+            <div className="hero-cta-row">
+              <Link className="btn btn-white" href="/products">Browse phones</Link>
+              <Link className="hero-link" href="/products">See today's deals</Link>
+            </div>
+            <div className="hero-points">
+              <div><strong>Same-day delivery</strong>in Kigali, order before 3 PM</div>
+              <div><strong>Provinces served</strong>2–4 days, fee by district</div>
+              <div><strong>Mobile money</strong>MTN MoMo &amp; Airtel Money</div>
+            </div>
+          </div>
+
+          <aside className="hero-deal">
+            <span className="hero-deal-tag">Deal of the week</span>
+            <Image
+              src={productImage(heroDeal)}
+              alt={heroDeal.title}
+              width={340}
+              height={190}
+              priority
+            />
+            <h2>{heroDeal.title}</h2>
+            <div className="price-row">
+              <span className="price">{formatRWF(heroDeal.price)}</span>
+              <span className="price-old">{formatRWF(heroDeal.oldPrice)}</span>
+              <span className="deal-flag" style={{ position: "static" }}>{heroDeal.off}</span>
+            </div>
+            <AddToCartButton />
           </aside>
-
-          <div className="hero-banner">
-            <div className="hero-glow" />
-            <div className="hero-copy">
-              <p className="eyebrow">Phones &amp; Electronics · Kigali</p>
-              <h1>Genuine phones &amp; electronics, delivered to your door.</h1>
-              <p>
-                Shop the latest phones, laptops and TVs — pay with MTN MoMo or Airtel Money.
-                Fast delivery in Kigali; provinces served on request (delivery fees apply).
-              </p>
-              <Link className="btn btn-primary" href="/products">
-                Shop today's deals
-                <IconArrow width="15" height="15" />
-              </Link>
-            </div>
-            <svg className="hero-art" viewBox="0 0 300 220" fill="none" aria-hidden="true">
-              <g stroke="#ffffff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.9">
-                <rect x="30" y="40" width="150" height="95" rx="6" />
-                <path d="M10 155h190" />
-                <rect x="200" y="55" width="62" height="120" rx="10" />
-                <line x1="222" y1="160" x2="240" y2="160" />
-              </g>
-              <circle cx="105" cy="87" r="16" fill="#b7c8ec" />
-              <circle cx="231" cy="100" r="10" fill="#b7c8ec" />
-            </svg>
-          </div>
-
-          <div className="hero-side">
-            <div className="side-card">
-              <h3>Pay your way</h3>
-              <div className="momo-badges">
-                <span className="momo-badge mtn">MTN MoMo</span>
-                <span className="momo-badge airtel">Airtel Money</span>
-              </div>
-              <p>
-                Checkout is 100% mobile money — pay with MTN MoMo or Airtel Money.
-                No card or bank account needed.
-              </p>
-              <a className="card-link" href="#">How payments work →</a>
-            </div>
-            <div className="side-card">
-              <h3>Need help choosing?</h3>
-              <p>
-                Not sure which phone fits your budget? Talk to us — we'll help you
-                pick the right one.
-              </p>
-              <a className="card-link" href="#">Contact us →</a>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -137,7 +104,7 @@ export default function HomePage() {
             <IconTruck />
             <div>
               <strong>Kigali delivery</strong>
-              <span>Same-day &amp; next-day · fee from RWF 1,500</span>
+              <span>Same-day &amp; next-day, fee from RWF 1,500</span>
             </div>
           </div>
           <div className="trust-item">
@@ -157,12 +124,26 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Shop by category */}
+      {/* Today's deals */}
       <section>
         <div className="container">
           <div className="section-head">
+            <h2>Today's deals</h2>
+            <Link className="see-all" href="/products">See all →</Link>
+          </div>
+          <div className="product-grid">
+            {deals.map((p) => (
+              <ProductCard key={p.slug} product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Shop by category */}
+      <section style={{ paddingTop: 4 }}>
+        <div className="container">
+          <div className="section-head">
             <h2>Shop by category</h2>
-            <Link className="see-all" href="/products">All categories →</Link>
           </div>
           <div className="tile-grid">
             {tiles.map(({ label, from, icon: Icon }) => (
@@ -176,30 +157,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <svg className="hills" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M0 60V40Q180 5 360 32Q480 48 600 30Q760 8 900 34Q1040 52 1160 30Q1300 8 1440 36V60Z"
-        />
-      </svg>
-
-      {/* Today's deals */}
-      <section style={{ paddingTop: 10 }}>
-        <div className="container">
-          <div className="section-head">
-            <h2>Today's deals</h2>
-            <Link className="see-all" href="/products">See all deals →</Link>
-          </div>
-          <div className="product-grid">
-            {bySlugs(deals).map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Best sellers */}
-      <section>
+      <section style={{ paddingTop: 4 }}>
         <div className="container">
           <div className="section-head">
             <h2>Best sellers</h2>
@@ -214,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* Brands */}
-      <section style={{ paddingTop: 6 }}>
+      <section style={{ paddingTop: 4 }}>
         <div className="container">
           <div className="section-head">
             <h2>Popular brands</h2>
@@ -230,10 +189,9 @@ export default function HomePage() {
       </section>
 
       {/* Sourcing CTA */}
-      <section>
+      <section style={{ paddingTop: 4 }}>
         <div className="container">
           <div className="sell-band">
-            <div className="hero-glow" />
             <div>
               <h2>Looking for a phone we don't have?</h2>
               <p>
@@ -241,7 +199,7 @@ export default function HomePage() {
                 and deliver them to your door in Kigali.
               </p>
             </div>
-            <a className="btn btn-primary" href="#">Request a phone</a>
+            <Link className="btn btn-white" href="/products">Request a phone</Link>
           </div>
         </div>
       </section>
