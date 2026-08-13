@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-import AddToCartButton from "@/components/AddToCartButton";
 import { bySlugs, findProduct, formatRWF, productImage, products } from "@/lib/products";
+import { services } from "@/lib/services";
 import {
   IconShield,
   IconTruck,
@@ -21,13 +21,22 @@ import {
   IconWhatsApp,
 } from "@/components/Icons";
 
+const serviceIcons = {
+  phone: IconPhone,
+  card: IconCard,
+  swap: IconSwap,
+  cash: IconCash,
+  wrench: IconWrench,
+  camera: IconCamera,
+};
+
 const tiles = [
-  { label: "Phones & Tablets", from: "from RWF 85,000", icon: IconPhone },
-  { label: "Computers & Laptops", from: "from RWF 720,000", icon: IconLaptop },
-  { label: "Audio & Sound", from: "from RWF 28,000", icon: IconHeadphones },
-  { label: "Wearables", from: "from RWF 55,000", icon: IconWatch },
-  { label: "Gaming", from: "from RWF 95,000", icon: IconGamepad },
-  { label: "Power & Networking", from: "from RWF 35,000", icon: IconZap },
+  { label: "Phones & Tablets", from: "from RWF 85,000", icon: IconPhone, category: "phones" },
+  { label: "Computers & Laptops", from: "from RWF 720,000", icon: IconLaptop, category: "computers" },
+  { label: "Audio & Sound", from: "from RWF 28,000", icon: IconHeadphones, category: "audio" },
+  { label: "Wearables", from: "from RWF 55,000", icon: IconWatch, category: "wearables" },
+  { label: "Gaming", from: "from RWF 95,000", icon: IconGamepad, category: "gaming" },
+  { label: "Power & Networking", from: "from RWF 35,000", icon: IconZap, category: "power" },
 ];
 
 const bestSellers = [
@@ -50,51 +59,59 @@ const brands = [
 
 export default function HomePage() {
   const deals = products.filter((p) => p.off);
+  const heroPhone = findProduct("iphone-16-pro-max");
   const heroDeal = findProduct("tecno-spark-20");
 
   return (
     <main>
-      {/* Hero — concrete offer, full-width band */}
+      {/* Hero */}
       <section className="hero">
         <div className="container hero-inner">
           <div className="hero-copy">
             <p className="eyebrow">Phones that power your life</p>
-            <h1>New phones, genuine stock, Kigali delivery.</h1>
+            <h1>Get a genuine phone today — pay your way.</h1>
             <p>
-              Apple, Samsung, Tecno, Infinix, itel and Xiaomi from official distributors —
-              sealed in the box with a 12-month warranty. Pay with MTN MoMo or Airtel Money.
+              Sealed phones with a 12-month warranty. Pay in full with mobile money,
+              take an iPhone with a 40–50% deposit, or trade in your old phone and
+              top up the difference.
             </p>
             <div className="hero-cta-row">
-              <Link className="btn btn-white" href="/products">Browse phones</Link>
+              <Link className="btn btn-blue" href="/products?category=phones">Browse phones</Link>
               <a className="btn btn-wa" href="https://wa.me/250780285043" target="_blank" rel="noopener">
                 <IconWhatsApp />
                 WhatsApp us
               </a>
             </div>
-            <div className="hero-points">
-              <div><strong>Same-day delivery</strong>in Kigali, order before 3 PM</div>
-              <div><strong>Pay in installments</strong>40–50% deposit on iPhones</div>
-              <div><strong>Trade-in welcome</strong>your old phone counts</div>
+            <div className="hero-proof">
+              <div><strong>2,000+ phones sold</strong>in Kigali and beyond</div>
+              <div><strong>Same-day delivery</strong>order before 3 PM</div>
+              <div><strong>12-month warranty</strong>on every sealed phone</div>
             </div>
           </div>
 
-          <aside className="hero-deal">
-            <span className="hero-deal-tag">Deal of the week</span>
-            <Image
-              src={productImage(heroDeal)}
-              alt={heroDeal.title}
-              width={340}
-              height={190}
-              priority
-            />
-            <h2>{heroDeal.title}</h2>
-            <div className="price-row">
+          <div className="hero-visual" aria-hidden="true">
+            <div className="swoosh" />
+            <div className="swoosh swoosh-2" />
+            <Link className="hero-card hero-card-back" href={"/product/" + heroPhone.slug}>
+              <Image src={productImage(heroPhone)} alt="" width={180} height={170} priority />
+              <strong>{heroPhone.title.split("—")[0].trim()}</strong>
+              <span className="price">{formatRWF(heroPhone.price)}</span>
+            </Link>
+            <Link className="hero-card hero-card-front" href={"/product/" + heroDeal.slug}>
+              <span className="deal-flag">{heroDeal.off}</span>
+              <Image src={productImage(heroDeal)} alt="" width={180} height={170} priority />
+              <strong>{heroDeal.title.split("—")[0].trim()}</strong>
               <span className="price">{formatRWF(heroDeal.price)}</span>
-              <span className="price-old">{formatRWF(heroDeal.oldPrice)}</span>
-              <span className="deal-flag" style={{ position: "static" }}>{heroDeal.off}</span>
-            </div>
-            <AddToCartButton />
-          </aside>
+            </Link>
+            <span className="float-chip chip-installment">
+              <IconCard />
+              40–50% deposit, rest in 2 months
+            </span>
+            <span className="float-chip chip-trade">
+              <IconSwap />
+              Trade-in welcome
+            </span>
+          </div>
         </div>
       </section>
 
@@ -137,7 +154,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <h2>Today's deals</h2>
-            <Link className="see-all" href="/products">See all →</Link>
+            <Link className="see-all" href="/products?deals=1">See all →</Link>
           </div>
           <div className="product-grid">
             {deals.map((p) => (
@@ -152,7 +169,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <h2>iPhones</h2>
-            <Link className="see-all" href="/products">See all →</Link>
+            <Link className="see-all" href="/services/installments">Pay 40–50% now, rest in 2 months →</Link>
           </div>
           <div className="product-grid">
             {products
@@ -171,48 +188,19 @@ export default function HomePage() {
             <h2>Our services</h2>
           </div>
           <div className="service-grid">
-            <div className="service-card">
-              <IconPhone />
-              <div>
-                <strong>Phone sales</strong>
-                <p>New, sealed phones from official distributors — 12-month warranty on every one.</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <IconCard />
-              <div>
-                <strong>Pay in installments</strong>
-                <p>Take an iPhone with a 40–50% deposit and pay the balance over 2 months.</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <IconSwap />
-              <div>
-                <strong>Trade-in (top up)</strong>
-                <p>Bring your old phone — we value it on the spot and you pay only the difference.</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <IconCash />
-              <div>
-                <strong>We buy phones</strong>
-                <p>Selling your phone? We check it and pay you cash or mobile money the same day.</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <IconWrench />
-              <div>
-                <strong>Phone repair</strong>
-                <p>Screens, batteries, charging ports and software — quick repairs in Kigali.</p>
-              </div>
-            </div>
-            <div className="service-card">
-              <IconCamera />
-              <div>
-                <strong>Laptops, cameras &amp; accessories</strong>
-                <p>Laptops, cameras, speakers, Bluetooth headsets, chargers and more.</p>
-              </div>
-            </div>
+            {services.map((service) => {
+              const Icon = serviceIcons[service.icon] || IconPhone;
+              return (
+                <Link className="service-card" key={service.slug} href={"/services/" + service.slug}>
+                  <Icon />
+                  <div>
+                    <strong>{service.title}</strong>
+                    <p>{service.card}</p>
+                    <span className="service-more">How it works →</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -224,8 +212,8 @@ export default function HomePage() {
             <h2>Shop by category</h2>
           </div>
           <div className="tile-grid">
-            {tiles.map(({ label, from, icon: Icon }) => (
-              <Link className="tile" key={label} href="/products">
+            {tiles.map(({ label, from, icon: Icon, category }) => (
+              <Link className="tile" key={label} href={"/products?category=" + category}>
                 <Icon strokeWidth="1.6" />
                 <strong>{label}</strong>
                 <span>{from}</span>

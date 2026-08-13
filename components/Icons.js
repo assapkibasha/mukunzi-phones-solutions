@@ -202,6 +202,15 @@ export function IconRouter(props) {
   );
 }
 
+export function IconTag(props) {
+  return (
+    <Svg {...props}>
+      <path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4a1 1 0 0 0-1 1v5.6c0 .5.2 1 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l4.6-4.6a2 2 0 0 0 0-2.8Z" />
+      <circle cx="7.5" cy="7.5" r="1" />
+    </Svg>
+  );
+}
+
 export function IconWrench(props) {
   return (
     <Svg {...props}>

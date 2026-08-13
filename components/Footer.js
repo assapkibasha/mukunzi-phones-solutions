@@ -16,11 +16,11 @@ export default function Footer() {
           <div>
             <h4>Shop</h4>
             <ul>
-              <li><Link href="/products">Phones &amp; Tablets</Link></li>
-              <li><Link href="/products">Computers &amp; Laptops</Link></li>
-              <li><Link href="/products">Audio &amp; Sound</Link></li>
-              <li><Link href="/products">Power &amp; Accessories</Link></li>
-              <li><Link href="/products">Today's Deals</Link></li>
+              <li><Link href="/products?category=phones">Phones &amp; Tablets</Link></li>
+              <li><Link href="/products?category=computers">Computers &amp; Laptops</Link></li>
+              <li><Link href="/products?category=audio">Audio &amp; Sound</Link></li>
+              <li><Link href="/products?category=power">Power &amp; Accessories</Link></li>
+              <li><Link href="/products?deals=1">Today's Deals</Link></li>
             </ul>
           </div>
           <div>
@@ -36,11 +36,11 @@ export default function Footer() {
           <div>
             <h4>Services</h4>
             <ul>
-              <li>Phone sales &amp; buying</li>
-              <li>Trade-in (top up)</li>
-              <li>Installment plans on iPhones</li>
-              <li>Phone repair</li>
-              <li>Laptops, cameras &amp; accessories</li>
+              <li><Link href="/services/phone-sales">Phone sales</Link></li>
+              <li><Link href="/services/we-buy-phones">We buy phones</Link></li>
+              <li><Link href="/services/trade-in">Trade-in (top up)</Link></li>
+              <li><Link href="/services/installments">Installments on iPhones</Link></li>
+              <li><Link href="/services/phone-repair">Phone repair</Link></li>
             </ul>
           </div>
         </div>

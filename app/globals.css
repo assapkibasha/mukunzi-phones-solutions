@@ -209,98 +209,133 @@ section { padding: 26px 0; }
 }
 
 /* ============================================================
-   Category nav
+   Category nav — icon chips on white
    ============================================================ */
 .cat-nav {
-  background: var(--blue);
-  color: #e7ecf9;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
 }
 .cat-nav .container {
   display: flex;
-  align-items: stretch;
+  gap: 8px;
+  padding-block: 10px;
   overflow-x: auto;
   scrollbar-width: none;
 }
 .cat-nav .container::-webkit-scrollbar { display: none; }
-.cat-nav a, .cat-nav button {
-  display: flex;
+.cat-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 15px;
-  font-size: 13.5px;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 600;
-  color: #e7ecf9;
+  color: var(--ink);
+  background: var(--paper);
   white-space: nowrap;
-  transition: background 0.15s;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
-.cat-nav a:hover, .cat-nav button:hover { background: var(--blue-dark); }
-.all-cats { background: var(--blue-deep); }
-.nav-deal { color: #ffc9c0 !important; }
+.cat-chip svg { width: 16px; height: 16px; stroke: var(--blue); }
+.cat-chip:hover { border-color: var(--blue); color: var(--blue); background: #fff; }
+.deal-chip { background: #fbeae7; border-color: #f0c8c0; color: var(--sale); }
+.deal-chip svg { stroke: var(--sale); }
+.deal-chip:hover { border-color: var(--sale); color: var(--sale); background: #fbeae7; }
 
 /* ============================================================
-   Hero — full-bleed band with a concrete offer
+   Hero — light, flyer-style swoosh, product cards
    ============================================================ */
 .hero {
-  background: linear-gradient(100deg, var(--blue-deep) 0%, var(--blue) 70%, #27459c 100%);
-  color: #fff;
+  background:
+    radial-gradient(900px 420px at 88% -10%, #d9edfb 0%, rgba(217, 237, 251, 0) 60%),
+    linear-gradient(180deg, #f9fbfd 0%, #eef2f8 100%);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
   padding: 0;
 }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 48px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
   align-items: center;
-  padding-block: 40px;
+  padding-block: 46px 42px;
 }
 .hero-copy .eyebrow {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #9db2e4;
+  color: var(--blue);
   margin-bottom: 10px;
 }
 .hero-copy h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(26px, 2.6vw, 38px);
-  line-height: 1.12;
+  font-size: clamp(28px, 2.8vw, 42px);
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  margin-bottom: 12px;
-  max-width: 17ch;
+  margin-bottom: 14px;
+  max-width: 18ch;
 }
-.hero-copy > p { color: #ccd6f1; margin-bottom: 22px; font-size: 15px; max-width: 52ch; }
-.hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.hero-link { color: #fff; font-weight: 600; font-size: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.4); padding-bottom: 1px; }
-.hero-link:hover { border-color: #fff; }
-.hero-points { display: flex; gap: 26px; margin-top: 26px; flex-wrap: wrap; }
-.hero-points div { font-size: 12.5px; color: #ccd6f1; }
-.hero-points strong { display: block; color: #fff; font-size: 13.5px; }
+.hero-copy > p { color: var(--ink-soft); margin-bottom: 22px; font-size: 15.5px; max-width: 54ch; }
+.hero-cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-proof { display: flex; gap: 28px; margin-top: 26px; flex-wrap: wrap; }
+.hero-proof div { font-size: 12.5px; color: var(--ink-soft); }
+.hero-proof strong { display: block; color: var(--ink); font-size: 13.5px; }
 
-.hero-deal {
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 6px;
-  padding: 16px 18px 18px;
+.hero-visual { position: relative; height: 400px; }
+.swoosh {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5fc2f1 0%, #2c4cb0 100%);
+  right: -30px;
+  top: -20px;
+}
+.swoosh-2 {
+  width: 130px;
+  height: 130px;
+  background: #c8e7f9;
+  left: 10px;
+  top: auto;
+  bottom: 10px;
+  right: auto;
+}
+.hero-card {
+  position: absolute;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 16px 38px rgba(18, 37, 89, 0.22);
+  padding: 14px 14px 12px;
+  width: 200px;
+  transition: transform 0.15s;
+}
+.hero-card img { height: 165px; width: auto; object-fit: contain; margin: 0 auto 8px; }
+.hero-card strong { display: block; font-size: 12.5px; line-height: 1.3; }
+.hero-card .price { font-size: 14px; }
+.hero-card .deal-flag { top: 10px; left: 10px; }
+.hero-card-back { right: 175px; top: 25px; transform: rotate(-4deg); }
+.hero-card-front { right: 20px; top: 75px; transform: rotate(3deg); }
+.hero-card:hover { transform: rotate(0deg) translateY(-4px); }
+.float-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-lift);
-  position: relative;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
 }
-.hero-deal-tag {
-  display: inline-block;
-  background: var(--sale);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 8px;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-.hero-deal img { height: 190px; width: auto; margin: 0 auto 12px; object-fit: contain; }
-.hero-deal h2 { font-size: 15px; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
-.hero-deal .price-row { margin-bottom: 12px; }
-.hero-deal .btn { width: 100%; }
+.float-chip svg { width: 15px; height: 15px; stroke: var(--blue); }
+.chip-installment { left: -10px; bottom: 55px; }
+.chip-trade { left: 30px; top: 8px; }
 
 /* ============================================================
    Trust strip
@@ -330,7 +365,7 @@ section { padding: 26px 0; }
 .tile span { font-size: 11px; color: var(--ink-soft); }
 
 /* ============================================================
-   Services grid
+   Services grid + service pages
    ============================================================ */
 .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .service-card {
@@ -341,10 +376,99 @@ section { padding: 26px 0; }
   display: flex;
   gap: 13px;
   align-items: flex-start;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
+.service-card:hover { border-color: var(--blue); box-shadow: var(--shadow-lift); }
 .service-card svg { width: 26px; height: 26px; stroke: var(--blue); flex-shrink: 0; margin-top: 2px; }
 .service-card strong { display: block; font-size: 14px; margin-bottom: 3px; }
 .service-card p { font-size: 12.5px; color: var(--ink-soft); }
+.service-more {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.service-card:hover .service-more { text-decoration: underline; }
+
+.service-hero { display: flex; align-items: center; gap: 16px; margin: 6px 0 18px; }
+.service-hero svg { width: 44px; height: 44px; stroke: var(--blue); flex-shrink: 0; }
+.service-hero h1 { font-size: 26px; font-weight: 800; }
+.service-tagline { color: var(--ink-soft); font-size: 15px; }
+
+.service-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+.service-intro { font-size: 15px; color: var(--ink-soft); max-width: 75ch; margin-bottom: 22px; }
+.service-body h2 { font-size: 17px; font-weight: 800; margin-bottom: 12px; }
+
+.steps { display: grid; gap: 10px; margin-bottom: 24px; }
+.step {
+  display: flex;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 14px 16px;
+}
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step strong { font-size: 14px; }
+.step p { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+.service-notes { margin-bottom: 24px; }
+.service-notes li {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  padding: 7px 0 7px 22px;
+  position: relative;
+}
+.service-notes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.service-cta {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 18px;
+  position: sticky;
+  top: 12px;
+}
+.service-cta h3 { font-size: 15px; margin-bottom: 6px; }
+.service-cta p { font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; }
+.service-cta .btn { width: 100%; }
+.service-call {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  margin: 10px 0;
+}
+.service-call:hover { text-decoration: underline; }
+
+.active-filter a { color: var(--blue); font-weight: 700; }
+.filter-group label a:hover { color: var(--blue); text-decoration: underline; }
 
 /* ============================================================
    Product cards — white, dense, photo-led
@@ -675,8 +799,17 @@ footer { background: var(--blue-deep); color: #b3bfe2; margin-top: 34px; font-si
 @media (max-width: 900px) {
   .main-header .container { flex-wrap: wrap; gap: 12px; }
   .search-form { order: 3; min-width: 100%; max-width: none; }
-  .hero-inner { grid-template-columns: 1fr; gap: 26px; padding-block: 30px; }
-  .hero-deal { max-width: 420px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 30px; padding-block: 30px; }
+  .hero-visual { height: 330px; max-width: 440px; margin-inline: auto; width: 100%; }
+  .swoosh { width: 320px; height: 320px; right: 0; }
+  .hero-card { width: 175px; }
+  .hero-card img { height: 135px; }
+  .hero-card-back { right: auto; left: 15px; top: 30px; }
+  .hero-card-front { right: 15px; top: 70px; }
+  .chip-installment { left: 0; bottom: 12px; }
+  .chip-trade { display: none; }
+  .service-body { grid-template-columns: 1fr; }
+  .service-cta { position: static; }
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .listing-grid { grid-template-columns: 1fr; }

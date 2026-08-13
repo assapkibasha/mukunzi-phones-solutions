@@ -1,29 +1,55 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import { byCategory } from "@/lib/products";
+import { products, byCategory, CATEGORIES } from "@/lib/products";
 
-export const metadata = {
-  title: "Phones & Tablets",
-};
+export async function generateMetadata({ searchParams }) {
+  const { category, deals } = await searchParams;
+  if (deals) return { title: "Today's deals" };
+  return { title: CATEGORIES[category] || "All products" };
+}
 
-export default function ProductsPage() {
-  const items = byCategory("phones");
+export default async function ProductsPage({ searchParams }) {
+  const { category, deals } = await searchParams;
+
+  let items = products;
+  let title = "All products";
+  if (deals) {
+    items = products.filter((p) => p.off);
+    title = "Today's deals";
+  } else if (CATEGORIES[category]) {
+    items = byCategory(category);
+    title = CATEGORIES[category];
+  }
 
   return (
     <main>
       <div className="page-head">
         <div className="container">
           <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link href="/">Home</Link> › <span>Phones &amp; Tablets</span>
+            <Link href="/">Home</Link> › <Link href="/products">Shop</Link> › <span>{title}</span>
           </nav>
           <h1>
-            Phones &amp; Tablets <span className="result-count">— {items.length} products</span>
+            {title} <span className="result-count">— {items.length} {items.length === 1 ? "product" : "products"}</span>
           </h1>
         </div>
       </div>
 
       <div className="container listing-grid">
         <aside className="filters" aria-label="Filters">
+          <div className="filter-group">
+            <h4>Category</h4>
+            <label className={!category && !deals ? "active-filter" : undefined}>
+              <Link href="/products">All products</Link>
+            </label>
+            {Object.entries(CATEGORIES).map(([key, label]) => (
+              <label key={key} className={category === key ? "active-filter" : undefined}>
+                <Link href={"/products?category=" + key}>{label}</Link>
+              </label>
+            ))}
+            <label className={deals ? "active-filter" : undefined}>
+              <Link href="/products?deals=1">Today's deals</Link>
+            </label>
+          </div>
           <div className="filter-group">
             <h4>Brand</h4>
             <label><input type="checkbox" defaultChecked /> Apple</label>
@@ -40,12 +66,6 @@ export default function ProductsPage() {
               <span>–</span>
               <input type="number" placeholder="Max" aria-label="Maximum price" />
             </div>
-          </div>
-          <div className="filter-group">
-            <h4>Storage</h4>
-            <label><input type="checkbox" /> 64 GB</label>
-            <label><input type="checkbox" defaultChecked /> 128 GB</label>
-            <label><input type="checkbox" /> 256 GB</label>
           </div>
           <div className="filter-group">
             <h4>Rating</h4>
@@ -76,13 +96,6 @@ export default function ProductsPage() {
               <ProductCard key={p.slug} product={p} />
             ))}
           </div>
-
-          <nav className="pagination" aria-label="Pages">
-            <span className="current">1</span>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">Next →</a>
-          </nav>
         </div>
       </div>
     </main>

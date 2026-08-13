@@ -1,7 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import CartBadge from "@/components/CartBadge";
-import { IconSearch, IconMenu, IconUser, IconCart } from "@/components/Icons";
+import {
+  IconSearch,
+  IconUser,
+  IconCart,
+  IconPhone,
+  IconLaptop,
+  IconHeadphones,
+  IconWatch,
+  IconGamepad,
+  IconZap,
+  IconRouter,
+  IconWrench,
+  IconTag,
+} from "@/components/Icons";
 
 export default function Header() {
   return (
@@ -68,19 +81,44 @@ export default function Header() {
 
       <nav className="cat-nav" aria-label="Categories">
         <div className="container">
-          <button className="all-cats" type="button">
-            <IconMenu width="16" height="16" />
-            All categories
-          </button>
-          <Link href="/products">Phones &amp; Tablets</Link>
-          <Link href="/products">Computers &amp; Laptops</Link>
-          <Link href="/products">Audio &amp; Sound</Link>
-          <Link href="/products">Wearables</Link>
-          <Link href="/products">Gaming</Link>
-          <Link href="/products">Power &amp; Accessories</Link>
-          <Link href="/products">Networking</Link>
-          <Link className="nav-deal" href="/products">
+          <Link className="cat-chip deal-chip" href="/products?deals=1">
+            <IconTag />
             Today's Deals
+          </Link>
+          <Link className="cat-chip" href="/products?category=phones">
+            <IconPhone />
+            Phones &amp; Tablets
+          </Link>
+          <Link className="cat-chip" href="/products?category=computers">
+            <IconLaptop />
+            Computers &amp; Laptops
+          </Link>
+          <Link className="cat-chip" href="/products?category=audio">
+            <IconHeadphones />
+            Audio &amp; Sound
+          </Link>
+          <Link className="cat-chip" href="/products?category=wearables">
+            <IconWatch />
+            Wearables
+          </Link>
+          <Link className="cat-chip" href="/products?category=gaming">
+            <IconGamepad />
+            Gaming
+          </Link>
+          <Link className="cat-chip" href="/products?category=power">
+            <IconZap />
+            Power
+          </Link>
+          <Link className="cat-chip" href="/products?category=networking">
+            <IconRouter />
+            Networking
+          </Link>
+          <Link className="cat-chip" href="/services/phone-repair">
+            <IconWrench />
+            Repair
+          </Link>
+          <Link className="cat-chip" href="/products">
+            All products
           </Link>
         </div>
       </nav>
