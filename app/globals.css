@@ -335,6 +335,15 @@ section { padding: 26px 0; }
 .slide-light .slide-eyebrow { color: var(--blue); }
 .slide-light .slide-sub { color: var(--ink-soft); }
 
+.slide-orange {
+  background:
+    radial-gradient(720px 400px at 80% 20%, #ffdfc4 0%, rgba(255, 223, 196, 0) 62%),
+    linear-gradient(180deg, #fdfbf9 0%, #f3ede5 100%);
+  color: var(--ink);
+}
+.slide-orange .slide-eyebrow { color: #c2500b; }
+.slide-orange .slide-sub { color: var(--ink-soft); }
+
 .slide-photo { grid-template-columns: 1fr; color: #fff; }
 .slide-photo .slide-copy { max-width: 640px; }
 .slide-bg { z-index: 0; }

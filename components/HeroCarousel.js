@@ -78,23 +78,21 @@ export default function HeroCarousel() {
             </div>
           </div>
 
-          {/* 2 — Deal of the week */}
-          <div className="slide slide-light">
+          {/* 2 — iPhone 17 Pro Max, Cosmic Orange */}
+          <div className="slide slide-orange">
             <div className="slide-copy">
-              <p className="slide-eyebrow">
-                Deal of the week <span className="deal-flag" style={{ position: "static" }}>-12%</span>
-              </p>
-              <h2 className="slide-title">Tecno Spark 20 — RWF 145,000</h2>
+              <p className="slide-eyebrow">New arrival · Cosmic Orange</p>
+              <h2 className="slide-title">iPhone 17 Pro Max is here.</h2>
               <p className="slide-sub">
-                6.6" 90Hz screen, 128GB + 8GB RAM, sealed in the box with charger,
-                case and 12-month warranty. Was RWF 165,000.
+                A19 Pro, 6.9" ProMotion display, 48MP Pro Fusion cameras with 8x zoom.
+                256GB — RWF 2,590,000, installment plan available.
               </p>
-              <Link className="btn btn-blue slide-cta" href="/product/tecno-spark-20">
-                Buy now
+              <Link className="btn btn-blue slide-cta" href="/product/iphone-17-pro-max">
+                See the phone
               </Link>
             </div>
             <div className="slide-media">
-              <Image src="/products/tecno-spark-20.jpg" alt="Tecno Spark 20" width={300} height={300} priority />
+              <Image src="/products/iphone-17-pro-max.jpg" alt="iPhone 17 Pro Max in Cosmic Orange" width={320} height={300} priority />
             </div>
           </div>
 
